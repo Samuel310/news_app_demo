@@ -41,38 +41,45 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: isScreenLoading
-          ? Container(
-              child: Center(
-                child: SizedBox(
-                  width: 25,
-                  height: 25,
-                  child: CircularProgressIndicator(color: Colors.blue[900]),
-                ),
-              ),
-            )
-          : Stack(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/bg.jpg"),
-                      fit: BoxFit.cover,
+      body: Container(
+        child: Center(
+          child: Container(
+            constraints: BoxConstraints(maxWidth: 600),
+            child: isScreenLoading
+                ? Container(
+                    child: Center(
+                      child: SizedBox(
+                        width: 25,
+                        height: 25,
+                        child: CircularProgressIndicator(color: Colors.blue[900]),
+                      ),
                     ),
+                  )
+                : Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/bg.jpg"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                          child: Container(),
+                        ),
+                      ),
+                      Positioned(
+                        top: 120,
+                        left: 30,
+                        child: Text("Welcome !!", style: TextStyle(color: Colors.white, fontSize: 35)),
+                      ),
+                      showSignUpScreen ? SignUpWidget(changeView: changeView) : SignInWidget(changeView: changeView),
+                    ],
                   ),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-                    child: Container(),
-                  ),
-                ),
-                Positioned(
-                  top: 120,
-                  left: 30,
-                  child: Text("Welcome !!", style: TextStyle(color: Colors.white, fontSize: 35)),
-                ),
-                showSignUpScreen ? SignUpWidget(changeView: changeView) : SignInWidget(changeView: changeView),
-              ],
-            ),
+          ),
+        ),
+      ),
     );
   }
 }
