@@ -4,7 +4,7 @@ A new Flutter project, to demonstrate the integration of api.
 
 ## Web Demo
 
-[web app url](https://flutter-news-demo.000webhostapp.com/)
+[Web App URL](https://flutter-news-demo.000webhostapp.com/)
 
 For web app, in order to login you have to disable CORS in your browser.
 If you are running the app in chrome browser, follow the steps:
